@@ -1,0 +1,23 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /    # 设置项目访问路径
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/activititest?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    username: root
+    password: 1234
+  # Activiti 配置
+  activiti:
+    # 设置历史级别为 full，可以跟踪所有的历史记录
+    history-level: full
+    # 启用数据库历史记录
+    db-history-used: true
+    # 自动部署：是否检查并自动部署流程定义
+    check-process-definitions: false
+
+
+#logging:
+#  level:
+#    org.springframework: DEBUG
