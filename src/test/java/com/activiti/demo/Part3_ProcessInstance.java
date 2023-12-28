@@ -29,7 +29,7 @@ public class Part3_ProcessInstance {
                 // 1. 获取页面表单内容、请假时间、请假事由、String、formData（个人业务表）
                 // 2. fromData 写入业务表，返回业务表主键 ID == businessKey
                 // 3. 把业务数据与 Activiti7流程数据关联
-                .startProcessInstanceByKey("Part1_Deployment", "bKey001");
+                .startProcessInstanceByKey("Part4_Task", "bKey002");
         System.out.println("流程实例ID：" + processInstance.getProcessDefinitionId());
     }
 

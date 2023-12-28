@@ -1,5 +1,7 @@
 # Spring-Boot整合Activiti7
+**工作流基础流程**
 
+部署(Deployment) --->  流程定义(ProcessDefinition) ---> 初始化实例(ProcessInstance)  ---> 任务执行(Task)
 ## Deployment类
 ![image](image/427e10cec7a8ded84f4bf9560f86591.png)
 ```java
@@ -138,11 +140,16 @@
 ```
 
 ## 任务Task
+* Task: 获取任务ID、获取任务名称、获取任务创建时间、获取任务办理人、获取任务办理 
 
-* Task: 获取任务ID、获取任务名称、获取任务创建时间、获取任务办理人、获取任务办理
+**用户属性面板**
+* Assignee: 执行人/代理人
+* Candidate Users: 候选人
+* Candidate Groups: 候选组
+* Due Date: 任务到期时间
+
 
 ## 查询历史记录
-
 * 历史综合信息: HistoricProcessInstance、HistoricTaskInstance、HistoricDetail、HistoricVariableInstance
 * 历史变量信息: HistoricVariableInstance
 ```java
@@ -179,7 +186,7 @@ public void HistoricTaskInstanceByPiID(){
 * 支持逻辑运算 ${userName == "bajie" and pwd == "123"}
 * 支持变量与实体类赋值 
 
-对应Activiti数据表
+对应Activiti数据表 
 * act_ru_variable运行时参数表
 * act_hi_varinst历史参数表 
 ![image](image/img.png)
