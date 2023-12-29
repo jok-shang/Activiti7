@@ -27,6 +27,7 @@ public class Part2_ProcessDefinition {
         List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery()
                 .list();
         for (ProcessDefinition pd : list){
+            System.out.println("-----------------");
             // 获取名字
             System.out.println("Name: "+pd.getName());
             // 获取key

@@ -147,12 +147,66 @@
 * Candidate Users: 候选人
 * Candidate Groups: 候选组
 * Due Date: 任务到期时间
+```java
+ @Autowired
+    private TaskService taskService;
+
+    // 任务查询
+    @Test
+    void getTasks(){
+        List<Task> list = taskService.createTaskQuery().list();
+        for (Task task : list){
+            System.out.println("任务id: "+task.getId());
+            System.out.println("环节名称：" + task.getName());
+            System.out.println("任务执行人Assignee： "+task.getAssignee());
+        }
+    }
+
+    // 查询我的代办任务
+    @Test
+    void getTasksByAssignee(){
+        List<Task> list = taskService.createTaskQuery()
+                .taskAssignee("八戒")
+                .list();
+        for (Task task : list){
+            System.out.println("任务id："+task.getId());
+            System.out.println("环节名称：" + task.getName());
+            System.out.println("任务执行人Assignee： "+task.getAssignee());
+        }
+    }
+
+    // 执行任务
+    @Test
+    void completeTask(){
+        taskService.complete("9c884f2b-a566-11ee-8062-782b46d17275");
+        System.out.println("完成任务");
+    }
+
+    // 拾取任务/归还任务 (候选人 --- 谁先拾取谁执行)
+    @Test
+    void claimTask(){
+        Task task = taskService.createTaskQuery()
+                .taskId("ccf41d15-a5e8-11ee-a30d-782b46d17275")
+                .singleResult();
+        //任务拾取
+//        taskService.claim("ccf41d15-a5e8-11ee-a30d-782b46d17275","八戒");
+//        System.out.println("任务拾取");
+
+        // 任务归还 （s1  为null 归还任务， s1 为用户  交办任务）
+        taskService.setAssignee("ccf41d15-a5e8-11ee-a30d-782b46d17275","悟空");
+
+    }
+
+```
 
 
 ## 查询历史记录
-* 历史综合信息: HistoricProcessInstance、HistoricTaskInstance、HistoricDetail、HistoricVariableInstance
+* 历史综合信息: HistoricTaskInstance
 * 历史变量信息: HistoricVariableInstance
 ```java
+   @Autowired
+   private HistoryService historyService;
+
 // 根据用户名查询历史记录
 public void HistoricTaskInstanceByUser(){
     List<HistoricTaskInstance> list=historyService
@@ -191,3 +245,20 @@ public void HistoricTaskInstanceByPiID(){
 * act_hi_varinst历史参数表 
 ![image](image/img.png)
 ![image](image/img_1.png)
+```java
+  /*
+    注意不能使用驼峰命名
+    必须实现序列化
+     */
+@Data
+public class UEL_POJO implements Serializable {
+
+    /*
+    注意不能使用驼峰命名
+     */
+    private String zhixingren;
+
+    private String pay;
+
+}
+```
