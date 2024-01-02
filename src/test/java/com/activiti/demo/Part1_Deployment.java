@@ -32,11 +32,11 @@ class Part1_Deployment {
 //        String filename = "BPMN/Part1_Deployment.bpmn20.png";
 //        String filename = "BPMN/Part4_Task.bpmn20.xml";
         // 拾取任务
-        String filename = "BPMN/Part6_UEL_V3.bpmn20.xml";
+        String filename = "BPMN/Part7_Inclusive.bpmn20.xml";
         Deployment deployment = repositoryService.createDeployment()
                 .addClasspathResource(filename)
 //                .addClasspathResource("BPMN/Part1_Deployment.bpmn20.xml")
-                .name("UEL_V3")
+                .name("Inclusive包含网关")
                 .deploy();
         System.out.println(deployment.getName());
     }

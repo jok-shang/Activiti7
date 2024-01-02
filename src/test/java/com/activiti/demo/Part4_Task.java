@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -37,7 +38,9 @@ public class Part4_Task {
         List<Task> list = taskService.createTaskQuery()
                 .taskAssignee("唐僧")
                 .list();
+
         for (Task task : list){
+            System.out.println("------------------------");
             System.out.println("任务id："+task.getId());
             System.out.println("环节名称：" + task.getName());
             System.out.println("任务执行人Assignee： "+task.getAssignee());
@@ -48,7 +51,9 @@ public class Part4_Task {
     // 执行任务
     @Test
     void completeTask(){
-        taskService.complete("05a56a35-a613-11ee-b6ab-782b46d17275");
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("day",1);
+        taskService.complete("fc53caf5-a90e-11ee-baf0-782b46d17275",map);
         System.out.println("完成任务");
     }
 
