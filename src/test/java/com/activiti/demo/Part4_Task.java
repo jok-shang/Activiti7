@@ -36,7 +36,7 @@ public class Part4_Task {
     @Test
     void getTasksByAssignee(){
         List<Task> list = taskService.createTaskQuery()
-                .taskAssignee("唐僧")
+                .taskAssignee("user2")
                 .list();
 
         for (Task task : list){
@@ -51,9 +51,10 @@ public class Part4_Task {
     // 执行任务
     @Test
     void completeTask(){
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("day",1);
-        taskService.complete("fc53caf5-a90e-11ee-baf0-782b46d17275",map);
+//        HashMap<String, Object> map = new HashMap<>();
+//        map.put("day",1);
+//        taskService.complete("fc53caf5-a90e-11ee-baf0-782b46d17275",map);
+        taskService.complete("d4386fbe-ba8c-11ee-aaf5-782b46d17275");
         System.out.println("完成任务");
     }
 

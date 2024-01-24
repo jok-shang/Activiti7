@@ -23,13 +23,15 @@ public class Part3_ProcessInstance {
     private RuntimeService runtimeService;
 
     // 初始化流程实例
+    //cz 333  启动流程实例   使用  key
     @Test
     void initProcessInstance() {
         // 1. 获取页面表单内容、请假时间、请假事由、String、formData（个人业务表）
         // 2. fromData 写入业务表，返回业务表主键 ID == businessKey
         // 3. 把业务数据与 Activiti7流程数据关联
         ProcessInstance processInstance = runtimeService
-                .startProcessInstanceByKey("Part7_Inclusive", "bKey006");
+                .startProcessInstanceByKey("ac");
+//                .startProcessInstanceByKey("Part7_Inclusive", "bKey006");
         System.out.println("流程实例ID：" + processInstance.getProcessDefinitionId());
     }
 

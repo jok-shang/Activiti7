@@ -27,16 +27,17 @@ class Part1_Deployment {
 
 
     // 通过bpmn部署流程
+    // cz 111  流程 1 上传文件和名称
     @Test
     void initDeploymentBPMN() {
 //        String filename = "BPMN/Part1_Deployment.bpmn20.png";
 //        String filename = "BPMN/Part4_Task.bpmn20.xml";
         // 拾取任务
-        String filename = "BPMN/Part7_Inclusive.bpmn20.xml";
+        String filename = "BPMN/ac.bpmn20.xml";
         Deployment deployment = repositoryService.createDeployment()
                 .addClasspathResource(filename)
 //                .addClasspathResource("BPMN/Part1_Deployment.bpmn20.xml")
-                .name("Inclusive包含网关")
+                .name("ac测试")
                 .deploy();
         System.out.println(deployment.getName());
     }
@@ -58,6 +59,7 @@ class Part1_Deployment {
     }
 
     // 查询流程部署
+    // cz 2222  拿到 key
     @Test
     void getDeployment() {
         List<Deployment> list = repositoryService.createDeploymentQuery().list();
